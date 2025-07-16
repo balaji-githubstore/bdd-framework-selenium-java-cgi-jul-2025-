@@ -8,7 +8,7 @@ public class EmployeeSteps {
 
 	@When("User click on PIM menu")
 	public void user_click_on_pim_menu() {
-	  
+	  System.out.println("pim menu");
 	}
 	@When("User click on Add Employee")
 	public void user_click_on_add_employee() {
