@@ -31,6 +31,9 @@ public class EmployeeSteps {
 	    System.out.println(lists.get(0).get("firstname"));
 	    System.out.println(lists.get(0).get("middlename"));
 	    System.out.println(lists.get(0).get("lastname"));
+	    
+	    System.out.println(lists.get(0).get("select_employee_type"));
+	  
 	}
 	
 	@When("User clicks on save employee")
