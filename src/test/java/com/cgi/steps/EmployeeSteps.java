@@ -3,20 +3,25 @@ package com.cgi.steps;
 import java.util.List;
 import java.util.Map;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import com.cgi.base.AutomationHooks;
+
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class EmployeeSteps {
-
+	
 	@When("User click on PIM menu")
 	public void user_click_on_pim_menu() {
-	  System.out.println("pim menu");
+	  AutomationHooks.driver.findElement(By.xpath("//span[text()='PIM']")).click();
 	}
 	
 	@When("User click on Add Employee")
 	public void user_click_on_add_employee() {
-	    
+		AutomationHooks.driver.findElement(By.xpath("//a[text()='Add Employee']")).click();
 	}
 	
 	@When("User fill the employee form")
