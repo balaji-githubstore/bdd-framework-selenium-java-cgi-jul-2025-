@@ -17,9 +17,6 @@ public class LoginSteps {
 
 	@Given("User have browser with OrangeHRM application")
 	public void user_have_browser_with_orange_hrm_application() {
-		AutomationHooks.driver = new ChromeDriver();
-		AutomationHooks.driver.manage().window().maximize();
-		AutomationHooks.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		AutomationHooks.driver.get("https://opensource-demo.orangehrmlive.com/");
 	}
 
@@ -40,15 +37,15 @@ public class LoginSteps {
 
 	@Then("User should get access to dashboard page with content as {string}")
 	public void user_should_get_access_to_dashboard_page_with_content_as(String expectedValue) {
-		String actualValue = AutomationHooks.driver.findElement(By.xpath("//p[contains(normalize-space(),'at Work')]")).getText();
+		String actualValue = AutomationHooks.driver.findElement(By.xpath("//p[contains(normalize-space(),'at Work')]"))
+				.getText();
 		Assert.assertEquals(actualValue, expectedValue);
 	}
 
 	@Then("User should get error message as {string}")
 	public void user_should_get_error_message_as(String expectedError) {
-		String actualError = AutomationHooks.driver.findElement(By.xpath("//p[contains(normalize-space(),'Invalid')]")).getText();
+		String actualError = AutomationHooks.driver.findElement(By.xpath("//p[contains(normalize-space(),'Invalid')]"))
+				.getText();
 		Assert.assertTrue(actualError.contains(expectedError));
 	}
 }
-
-
