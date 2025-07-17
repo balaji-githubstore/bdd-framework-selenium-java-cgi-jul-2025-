@@ -9,9 +9,15 @@ public class WebDriverKeywords {
 
 	public WebDriverKeywords(WebDriver driver) {
 		this.driver = driver;
+		//load prop
+		//set wait conditions
 	}
 
 	public void clickOnElement(By locator) {
+		
+		//present
+		//visible
+		//click
 		driver.findElement(locator).click();
 	}
 
