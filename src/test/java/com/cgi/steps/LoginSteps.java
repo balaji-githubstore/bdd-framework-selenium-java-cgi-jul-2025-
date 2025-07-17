@@ -18,7 +18,6 @@ public class LoginSteps {
 		driver=hooks.driver;
 	}
 	
-
 	@Given("User have browser with OrangeHRM application")
 	public void user_have_browser_with_orange_hrm_application() {
 		driver.get("https://opensource-demo.orangehrmlive.com/");
