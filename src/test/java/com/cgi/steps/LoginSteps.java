@@ -1,54 +1,53 @@
 package com.cgi.steps;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import com.cgi.base.AutomationHooks;
+import com.cgi.pages.DashboardPage;
+import com.cgi.pages.LoginPage;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginSteps {
-	
-	private WebDriver driver;
-	public LoginSteps(AutomationHooks hooks)
-	{
-		driver=hooks.driver;
+
+	private final LoginPage login;
+	private final DashboardPage dashboard;
+
+	public LoginSteps(LoginPage login, DashboardPage dashboard) {
+		this.login = login;
+		this.dashboard = dashboard;
 	}
-	
+
 	@Given("User have browser with OrangeHRM application")
 	public void user_have_browser_with_orange_hrm_application() {
-		driver.get("https://opensource-demo.orangehrmlive.com/");
+		login.navigateToBaseUrl();
 	}
 
 	@When("User enter username as {string}")
 	public void user_enter_username_as(String username) {
-		driver.findElement(By.name("username")).sendKeys(username);
+		login.enterUsername(username);
 	}
 
 	@When("User enter password as {string}")
 	public void user_enter_password_as(String password) {
-		driver.findElement(By.name("password")).sendKeys(password);
+		login.enterPassword(password);
 	}
 
 	@When("User click on login")
 	public void user_click_on_login() {
-		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
+		login.clickOnLogin();
 	}
 
 	@Then("User should get access to dashboard page with content as {string}")
 	public void user_should_get_access_to_dashboard_page_with_content_as(String expectedValue) {
-		String actualValue = driver.findElement(By.xpath("//p[contains(normalize-space(),'at Work')]"))
-				.getText();
+		String actualValue = dashboard.getTimeAtWorkText();
 		Assert.assertEquals(actualValue, expectedValue);
 	}
 
 	@Then("User should get error message as {string}")
 	public void user_should_get_error_message_as(String expectedError) {
-		String actualError = driver.findElement(By.xpath("//p[contains(normalize-space(),'Invalid')]"))
-				.getText();
+		String actualError = login.getInvalidErrorMessage();
 		Assert.assertTrue(actualError.contains(expectedError));
 	}
 }
