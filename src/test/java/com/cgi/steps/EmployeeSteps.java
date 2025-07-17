@@ -19,12 +19,12 @@ public class EmployeeSteps {
 	private final AddEmployeePage addEmployeePage;
 	private final PersonalDataPage personalDataPage;
 
-	public EmployeeSteps(MainPage mainPage, PIMPage pimPage, AddEmployeePage addEmployeePage,PersonalDataPage personalDataPage) {
+	public EmployeeSteps(MainPage mainPage, PIMPage pimPage, 
+			AddEmployeePage addEmployeePage,PersonalDataPage personalDataPage) {
 		this.mainPage = mainPage;
 		this.pimPage = pimPage;
 		this.addEmployeePage = addEmployeePage;
 		this.personalDataPage=personalDataPage;
-
 	}
 
 	@When("User click on PIM menu")
