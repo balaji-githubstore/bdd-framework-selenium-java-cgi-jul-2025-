@@ -3,10 +3,10 @@ package com.cgi.steps;
 import java.util.List;
 import java.util.Map;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import com.cgi.base.AutomationHooks;
+import com.cgi.pages.AddEmployeePage;
+import com.cgi.pages.MainPage;
+import com.cgi.pages.PIMPage;
+import com.cgi.pages.PersonalDataPage;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
@@ -14,42 +14,50 @@ import io.cucumber.java.en.When;
 
 public class EmployeeSteps {
 
-	private WebDriver driver;
+	private final MainPage mainPage;
+	private final PIMPage pimPage;
+	private final AddEmployeePage addEmployeePage;
+	private final PersonalDataPage personalDataPage;
 
-	public EmployeeSteps(AutomationHooks hooks) {
-		driver = hooks.driver;
+	public EmployeeSteps(MainPage mainPage, PIMPage pimPage, AddEmployeePage addEmployeePage,PersonalDataPage personalDataPage) {
+		this.mainPage = mainPage;
+		this.pimPage = pimPage;
+		this.addEmployeePage = addEmployeePage;
+		this.personalDataPage=personalDataPage;
+
 	}
 
 	@When("User click on PIM menu")
 	public void user_click_on_pim_menu() {
-		driver.findElement(By.xpath("//span[text()='PIM']")).click();
+		mainPage.clickOnPIMMenu();
 	}
 
 	@When("User click on Add Employee")
 	public void user_click_on_add_employee() {
-		driver.findElement(By.xpath("//a[text()='Add Employee']")).click();
+		pimPage.clickOnAddEmployee();
 	}
 
 	@When("User fill the employee form")
 	public void user_fill_the_employee_form(DataTable dataTable) {
 		// fill the firstname,lastname,middlename
-		System.out.println(dataTable);
-
+//		System.out.println(dataTable);
+//
 		List<Map<String, String>> lists = dataTable.asMaps();
-		System.out.println(lists);
+//		System.out.println(lists);
+//
+//		System.out.println(lists.get(0));
+//		System.out.println(lists.get(0).get("firstname"));
+//		System.out.println(lists.get(0).get("middlename"));
+//		System.out.println(lists.get(0).get("lastname"));
 
-		System.out.println(lists.get(0));
-		System.out.println(lists.get(0).get("firstname"));
-		System.out.println(lists.get(0).get("middlename"));
-		System.out.println(lists.get(0).get("lastname"));
-
-		System.out.println(lists.get(0).get("select_employee_type"));
+		addEmployeePage.fillEmployeeDetails(lists.get(0).get("firstname"), lists.get(0).get("middlename"),
+				lists.get(0).get("lastname"));
 
 	}
 
 	@When("User clicks on save employee")
 	public void user_clicks_on_save_employee() {
-
+		addEmployeePage.clickOnSaveEmployee();
 	}
 
 	@Then("User should get the profile name as {string}")
