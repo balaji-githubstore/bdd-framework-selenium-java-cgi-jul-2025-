@@ -9,15 +9,15 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 public class AutomationHooks {
-	public static WebDriver driver;
+	public WebDriver driver;
 	
 	
 	@Before
 	public void beforeScenario()
 	{
-		AutomationHooks.driver = new ChromeDriver();
-		AutomationHooks.driver.manage().window().maximize();
-		AutomationHooks.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 
 	@After
