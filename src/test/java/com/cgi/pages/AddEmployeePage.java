@@ -4,8 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.cgi.base.AutomationHooks;
+import com.cgi.base.WebDriverKeywords;
 
-public class AddEmployeePage {
+public class AddEmployeePage extends WebDriverKeywords {
 	private By firstnameLocator=By.name("firstName");
 	private By middlenameLocator=By.name("middleName");
 	private By lastnameLocator=By.name("lastName");
@@ -15,6 +16,7 @@ public class AddEmployeePage {
 	private final WebDriver driver;
 
 	public AddEmployeePage(AutomationHooks hooks) {
+		super(hooks.driver);
 		this.driver = hooks.driver;
 	}
 	
