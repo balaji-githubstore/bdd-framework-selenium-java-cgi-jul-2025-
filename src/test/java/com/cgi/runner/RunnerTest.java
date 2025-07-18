@@ -10,7 +10,7 @@ import io.cucumber.testng.CucumberOptions;
 		//,publish = true
 		,plugin = {"html:target/cucumber-report.html"}
 		//,tags = "@regression and (not @smoke)"
-		,tags ="@employee"
+		,tags ="@valid"
 		)
 
 public class RunnerTest extends AbstractTestNGCucumberTests {
