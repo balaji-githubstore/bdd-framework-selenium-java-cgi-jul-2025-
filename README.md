@@ -20,9 +20,7 @@ Selenium WebDriver basics such as:
 - Locators, Actions, Waits
 - Frames, Windows, Alerts
 - Upload, Actions, Javascript, Options
-
-📁 **Session Details Folder:** `session notes` – contains `.docx` files with session-wise notes.
-
+  
 ---
 
 ## 🧰 Framework 1: Java Hybrid Framework  
@@ -50,6 +48,8 @@ Selenium WebDriver basics such as:
 | `b2-bdd-static-driver` | ⚙️ Uses **static WebDriver** – common approach for quick setup |
 | `b3-bdd-non-static-driver` | ✅ Uses **non-static WebDriver** with **Dependency Injection** (recommended for clean and scalable framework) |
 | `b4-final-code-bdd-in-class` | ✅ Final code done in the session |
+
+📁 **Session Details:** `session notes` – contains `.docx` files with session-wise notes.
 
 ---
 
